@@ -1,0 +1,6 @@
+py_env/*
+*.pyc
+.venv/*
+*.png
+*.ruff_cache/*
+*.mypy_cache/*

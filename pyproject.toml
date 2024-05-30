@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "build_llm"
+version = "0.0.1"
+description = "Build LLM based on the book from Sebastian"
+authors = [
+    "Subhash Pujari <subhash.pujari@gmail.com>"
+]
+license = "MIT license"
+readme = "Readme.md"
+
+[tool.poetry.dependencies]
+python = "^3.11,<3.13"
+torch = "^2.3.0"
+tiktoken = "^0.7.0"
+numpy = "^1.26.4"
+matplotlib = "^3.9.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = ">=0.1.14"
+pre-commit = "<=3.6.0"
+pytest = ">=7.4.4"
+mypy = ">=1.8.0"
+pytest-cov = ">=4.1.0"
+types-requests = "^2.31.0.20240125"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+files = ["build_llm/**/*py", "tests/**/*.py"]
+follow_imports = "skip"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-vv", "--showlocals"]
