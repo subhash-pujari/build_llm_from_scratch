@@ -1,7 +1,7 @@
 import tiktoken
 import re
-from build_llm.gpt.dataset import create_dataloader_v1
-from build_llm.gpt.tokenizers import SimpleTokenizerV2
+from build_llm.core.dataset import create_dataloader_v1
+from build_llm.core.tokenizers import SimpleTokenizerV2
 
 
 with open("data/the-verdict.txt", "r", encoding="utf-8") as f:
