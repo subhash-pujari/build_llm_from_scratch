@@ -22,7 +22,6 @@ class GPTModel(nn.Module):
     def forward(self, in_idx):
         batch_size, seq_len = in_idx.shape
         tok_embeds = self.tok_emb(in_idx)
-        # A
         pos_embeds = self.pos_emb(torch.arange(seq_len, device=in_idx.device))
         x = tok_embeds + pos_embeds
         x = self.drop_emb(x)
@@ -34,14 +33,22 @@ class GPTModel(nn.Module):
 
 def generate_text_simple(model, idx, max_new_tokens, context_size):  # A
     for _ in range(max_new_tokens):
+        # truncation to the context size
         idx_cond = idx[:, -context_size:]
 
         with torch.no_grad():
             logits = model(idx_cond)
 
+        # only the last token is used
         logits = logits[:, -1, :]
+
+        # convert logits to probabilities
         probas = torch.softmax(logits, dim=-1)
+
+        # a token with highest probability is selected
         idx_next = torch.argmax(probas, dim=-1, keepdim=True)
+
+        # concatenate the new token to the input
         idx = torch.cat((idx, idx_next), dim=1)
 
     return idx

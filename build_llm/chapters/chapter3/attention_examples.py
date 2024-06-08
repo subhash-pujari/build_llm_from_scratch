@@ -1,6 +1,6 @@
 import torch
 
-from build_llm.gpt.attention import (
+from build_llm.core.attention import (
     CausalAttention,
     MultiHeadAttention,
     SelfAttention_v2,

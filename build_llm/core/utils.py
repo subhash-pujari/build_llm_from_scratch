@@ -91,4 +91,4 @@ def plot_losses(epochs_seen, tokens_seen, train_losses, val_losses):
     ax2.plot(tokens_seen, train_losses, alpha=0)
     ax2.set_xlabel("Tokens seen")
     fig.tight_layout()
-    plt.show()
+    plt.savefig("loss_plot.png")
